@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Coder Yatra - Professional Responsive College Website">
+
+    <title>Coder Yatra | College of Technology</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: #252525;
+            background: #fbfaf8;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        /* Variables */
+        :root {
+            --red: #9f2027;
+            --red-dark: #7e181e;
+            --red-light: #f7e9e9;
+
+            --charcoal: #252525;
+            --dark: #303030;
+
+            --text: #292929;
+            --muted: #727272;
+
+            --cream: #fbfaf8;
+            --grey: #f1f0ed;
+            --border: #dedcd8;
+
+            --white: #ffffff;
+        }
+
+        /* Container */
+        .container {
+            width: min(1180px, calc(100% - 36px));
+            margin: auto;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(251, 250, 248, 0.97);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Logo */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: var(--red);
+            color: white;
+            font-family: "Manrope", sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name {
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--charcoal);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--red);
+        }
+
+        .brand-subtitle {
+            display: block;
+            color: #858585;
+            font-size: 9px;
+            line-height: 1;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* Navigation */
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            list-style: none;
+            padding-bottom: 15px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 10px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #505050;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .nav-apply {
+            display: inline-block !important;
+            background: var(--red);
+            color: white !important;
+            padding: 10px 17px !important;
+            text-align: center;
+        }
+
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--cream);
+            padding: 45px 0 65px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 670px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--red);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 17px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 26px;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .hero h1 {
+            font-family: "Manrope", sans-serif;
+            color: var(--charcoal);
+            font-size: clamp(40px, 8vw, 72px);
+            line-height: 0.99;
+            letter-spacing: -3px;
+            margin-bottom: 23px;
+        }
+
+        .hero h1 span {
+            color: var(--red);
+        }
+
+        .hero-description {
+            max-width: 570px;
+            color: #696969;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 27px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 20px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: var(--red);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: var(--red-dark);
+        }
+
+        .button-secondary {
+            background: transparent;
+            border-color: #c9c7c3;
+            color: var(--charcoal);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            background: #dedbd6;
+            padding: 8px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .hero-caption {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            background: white;
+            padding: 14px 17px;
+            min-width: 190px;
+            border-left: 3px solid var(--red);
+        }
+
+        .hero-caption strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: var(--charcoal);
+        }
+
+        .hero-caption span {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        /* Introduction */
+        .intro {
+            background: var(--charcoal);
+            color: white;
+            padding: 35px 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .intro h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            line-height: 1.3;
+            letter-spacing: -1px;
+        }
+
+        .intro h2 span {
+            color: #d9575d;
+        }
+
+        .intro p {
+            color: #bdbdbd;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* Section */
+        .section {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 38px;
+        }
+
+        .section-kicker {
+            color: var(--red);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 32px;
+            line-height: 1.15;
+            letter-spacing: -1.4px;
+            color: var(--charcoal);
+        }
+
+        .section-heading p {
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .about-image {
+            background: var(--grey);
+            padding: 8px;
+        }
+
+        .about-image img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .about-content h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .about-points {
+            list-style: none;
+            margin-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-points li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .about-points li::before {
+            content: "✓";
+            color: var(--red);
+            margin-right: 10px;
+            font-weight: 800;
+        }
+
+        /* Courses */
+        .courses-section {
+            background: var(--grey);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: #d5d3cf;
+            border: 1px solid #d5d3cf;
+        }
+
+        .course {
+            background: white;
+            padding: 27px 23px;
+            min-height: 230px;
+            transition: 0.2s ease;
+        }
+
+        .course:hover {
+            background: #fffafa;
+        }
+
+        .course-number {
+            color: var(--red);
+            font-family: "Manrope", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .course h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 20px;
+            margin: 38px 0 8px;
+            color: var(--charcoal);
+        }
+
+        .course p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .course-footer {
+            margin-top: 20px;
+            color: var(--red);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* Campus */
+        .campus-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .campus-item {
+            background: white;
+            padding: 25px;
+        }
+
+        .campus-item h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .campus-item p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .campus-item span {
+            display: block;
+            color: var(--red);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* Admission */
+        .admission {
+            background: var(--red);
+            color: white;
+            padding: 55px 0;
+        }
+
+        .admission-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .admission h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 32px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .admission p {
+            color: #f6dede;
+            font-size: 13px;
+            margin-top: 12px;
+            max-width: 560px;
+        }
+
+        .admission .button {
+            background: white;
+            color: var(--red);
+            border-color: white;
+        }
+
+        .admission .button:hover {
+            background: #f7eeee;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .contact-box {
+            background: white;
+            padding: 25px;
+        }
+
+        .contact-box span {
+            color: var(--red);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-box h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 16px;
+            margin-top: 9px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: #aaa;
+            padding: 35px 0;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .footer-brand span {
+            color: #d9575d;
+        }
+
+        .footer p {
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Tablet */
+        @media (min-width: 600px) {
+
+            .container {
+                width: min(1180px, calc(100% - 60px));
+            }
+
+            .hero {
+                padding: 70px 0 80px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .campus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 900px) {
+
+            .container {
+                width: min(1180px, calc(100% - 80px));
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex !important;
+                width: auto;
+                flex-direction: row;
+                align-items: center;
+                gap: 24px;
+                padding: 0;
+            }
+
+            .nav-links a {
+                padding: 7px 0;
+            }
+
+            .nav-apply {
+                padding: 10px 17px !important;
+            }
+
+            .hero {
+                padding: 90px 0 100px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1.05fr 0.95fr;
+                gap: 70px;
+            }
+
+            .section {
+                padding: 95px 0;
+            }
+
+            .section-heading {
+                grid-template-columns: 0.8fr 1.2fr;
+                align-items: end;
+            }
+
+            .section-heading p {
+                justify-self: end;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .campus-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .admission-grid {
+                grid-template-columns: 1fr auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="container navbar">
+
+            <a href="#" class="brand">
+
+                <div class="brand-mark">
+                    CY
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        Coder <span>Yatra</span>
+                    </div>
+
+                    <span class="brand-subtitle">
+                        College of Technology
+                    </span>
+                </div>
+
+            </a>
+
+            <label for="nav-toggle" class="nav-button">
+                ☰
+            </label>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#courses">Courses</a>
+                </li>
+
+                <li>
+                    <a href="#campus">Campus</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+                <li>
+                    <a href="#admission" class="nav-apply">
+                        Apply Now
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </header>
+
+
+    <!-- Hero -->
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        Coder Yatra · Since 2001
+                    </div>
+
+                    <h1>
+                        Education for a
+                        <span>changing world.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Coder Yatra brings together academic excellence,
+                        practical learning and technology to prepare
+                        students for meaningful careers.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#courses" class="button button-primary">
+                            Explore Programmes
+                        </a>
+
+                        <a href="#about" class="button button-secondary">
+                            Discover Coder Yatra
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <img
+                        src="images/clg.jpg"
+                        alt="Coder Yatra college campus"
+                    >
+
+                    <div class="hero-caption">
+
+                        <strong>
+                            A place to learn.
+                        </strong>
+
+                        <span>
+                            Campus · Community · Opportunity
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Introduction -->
+        <section class="intro">
+
+            <div class="container intro-grid">
+
+                <h2>
+                    More than a degree.
+                    <span>A foundation for what comes next.</span>
+                </h2>
+
+                <p>
+                    Our approach combines classroom learning with
+                    projects, technology, collaboration and continuous
+                    skill development. Students are encouraged to
+                    question, experiment and build.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+        <section class="section" id="about">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            About the college
+                        </div>
+
+                        <h2>
+                            Learn with purpose.
+                        </h2>
+                    </div>
+
+                    <p>
+                        Coder Yatra is built around a simple idea:
+                        students learn best when academic knowledge
+                        is connected to practical experience.
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-image">
+
+                        <img
+                            src="images/clg2.jpeg"
+                            alt="Students and campus environment"
+                        >
+
+                    </div>
+
+
+                    <div class="about-content">
+
+                        <h3>
+                            Strong fundamentals.
+                            Practical experience.
+                        </h3>
+
+                        <p>
+                            Our programmes focus on developing the
+                            knowledge and confidence students need
+                            to work in a technology-driven world.
+                        </p>
+
+                        <p>
+                            From programming and software development
+                            to data, artificial intelligence and
+                            cybersecurity, learning is supported by
+                            projects and practical activities.
+                        </p>
+
+                        <ul class="about-points">
+
+                            <li>
+                                Industry-oriented curriculum
+                            </li>
+
+                            <li>
+                                Project and practical learning
+                            </li>
+
+                            <li>
+                                Experienced faculty and mentors
+                            </li>
+
+                            <li>
+                                Career and placement guidance
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Courses -->
+        <section class="section courses-section" id="courses">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            Academic programmes
+                        </div>
+
+                        <h2>
+                            Find your field.
+                        </h2>
+                    </div>
+
+                    <p>
+                        Undergraduate, postgraduate and professional
+                        programmes designed around today's technology
+                        and tomorrow's opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="course-grid">
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Master of Computer Applications
+                        </h3>
+
+                        <p>
+                            Advanced computing, software development,
+                            databases, web technologies and application
+                            design.
+                        </p>
+
+                        <div class="course-footer">
+                            Postgraduate Programme →
+                        </div>
+
+                    </article>
+
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Bachelor of Computer Applications
+                        </h3>
+
+                        <p>
+                            Programming, databases, web development
+                            and computer application fundamentals.
+                        </p>
+
+                        <div class="course-footer">
+                            Undergraduate Programme →
+                        </div>
+
+                    </article>
+
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            03
+                        </div>
+
+                        <h3>
+                            B.Tech Computer Science
+                        </h3>
+
+                        <p>
+                            Computer science, algorithms, engineering
+                            fundamentals and software systems.
+                        </p>
+
+                        <div class="course-footer">
+                            Undergraduate Programme →
+                        </div>
+
+                    </article>
+
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            04
+                        </div>
+
+                        <h3>
+                            M.Sc. Artificial Intelligence
+                        </h3>
+
+                        <p>
+                            Machine learning, intelligent systems,
+                            data-driven applications and AI concepts.
+                        </p>
+
+                        <div class="course-footer">
+                            Postgraduate Programme →
+                        </div>
+
+                    </article>
+
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Master of Business Administration
+                        </h3>
+
+                        <p>
+                            Management, analytics, leadership and
+                            business decision-making skills.
+                        </p>
+
+                        <div class="course-footer">
+                            Postgraduate Programme →
+                        </div>
+
+                    </article>
+
+
+                    <article class="course">
+
+                        <div class="course-number">
+                            06
+                        </div>
+
+                        <h3>
+                            Cyber Security
+                        </h3>
+
+                        <p>
+                            Network security, digital safety,
+                            cyber defence and security fundamentals.
+                        </p>
+
+                        <div class="course-footer">
+                            Professional Programme →
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Campus -->
+        <section class="section" id="campus">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            Campus life
+                        </div>
+
+                        <h2>
+                            Space to learn,
+                            build and belong.
+                        </h2>
+                    </div>
+
+                    <p>
+                        A learning environment where students can
+                        collaborate, experiment and develop beyond
+                        the classroom.
+                    </p>
+
+                </div>
+
+
+                <div class="campus-grid">
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 01
+                        </span>
+
+                        <h3>
+                            Advanced Computer Labs
+                        </h3>
+
+                        <p>
+                            Dedicated computing facilities for
+                            programming, development and practical work.
+                        </p>
+
+                    </article>
+
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 02
+                        </span>
+
+                        <h3>
+                            Digital Library
+                        </h3>
+
+                        <p>
+                            Academic resources, technical references
+                            and digital learning material.
+                        </p>
+
+                    </article>
+
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 03
+                        </span>
+
+                        <h3>
+                            Innovation Centre
+                        </h3>
+
+                        <p>
+                            A collaborative space for projects,
+                            hackathons and student ideas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 04
+                        </span>
+
+                        <h3>
+                            Seminar Hall
+                        </h3>
+
+                        <p>
+                            Workshops, guest lectures, presentations
+                            and academic events.
+                        </p>
+
+                    </article>
+
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 05
+                        </span>
+
+                        <h3>
+                            Student Communities
+                        </h3>
+
+                        <p>
+                            Technical clubs and activities that
+                            encourage collaboration and leadership.
+                        </p>
+
+                    </article>
+
+
+                    <article class="campus-item">
+
+                        <span>
+                            FACILITY 06
+                        </span>
+
+                        <h3>
+                            Career Centre
+                        </h3>
+
+                        <p>
+                            Support for internships, interviews,
+                            placements and professional development.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Admission -->
+        <section class="admission" id="admission">
+
+            <div class="container admission-grid">
+
+                <div>
+
+                    <h2>
+                        Your next chapter
+                        starts here.
+                    </h2>
+
+                    <p>
+                        Applications for the upcoming academic session
+                        are open. Explore programmes and speak with our
+                        admissions team.
+                    </p>
+
+                </div>
+
+                <a href="#contact" class="button">
+                    Start Your Application →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact -->
+        <section class="section contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            Contact
+                        </div>
+
+                        <h2>
+                            We'd be happy to hear from you.
+                        </h2>
+                    </div>
+
+                    <p>
+                        Reach out to our team for admissions,
+                        programmes or general information.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+                    <div class="contact-box">
+
+                        <span>
+                            Visit
+                        </span>
+
+                        <h3>
+                            Coder Yatra Campus
+                        </h3>
+
+                        <p>
+                            Pune, Maharashtra, India
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-box">
+
+                        <span>
+                            Call
+                        </span>
+
+                        <h3>
+                            +91 98765 43210
+                        </h3>
+
+                        <p>
+                            Monday – Saturday · 9:00 AM – 5:00 PM
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-box">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <h3>
+                            info@coderyatra.edu.in
+                        </h3>
+
+                        <p>
+                            Admissions and general enquiries
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <div class="footer-brand">
+                    Coder <span>Yatra</span>
+                </div>
+
+                <p>
+                    College of Technology · Learn. Build. Grow.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#campus">Campus</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <p>
+                © 2026 Coder Yatra. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

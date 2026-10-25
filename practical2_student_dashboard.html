@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coder Yatra Student Academic Dashboard">
+    <title>Student Academic Dashboard | Coder Yatra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #e4d851;
+            --accent-dark: #d03737;
+            --accent-light: #FFF8E7;
+            --charcoal: #262626;
+            --dark: #303030;
+            --text: #292929;
+            --muted: #77736B;
+            --background: #F6F5F1;
+            --white: #FFFFFF;
+            --border: #E7E3DA;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Layout */
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 245px;
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 28px 18px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 30px;
+            border-bottom: 1px solid #444;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            background: var(--accent);
+            color: var(--charcoal);
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .brand h2 {
+            font-size: 18px;
+            letter-spacing: -0.4px;
+        }
+
+        .brand span {
+            display: block;
+            color: #aaa;
+            font-size: 11px;
+            margin-top: 1px;
+        }
+
+        .nav {
+            margin-top: 28px;
+        }
+
+        .nav-title {
+            color: #888;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            padding: 0 12px 12px;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 7px;
+            color: #c9c9c9;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background: var(--accent);
+            color: var(--charcoal);
+        }
+
+        .nav-icon {
+            width: 21px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+            bottom: 25px;
+            left: 28px;
+            right: 28px;
+            border-top: 1px solid #444;
+            padding-top: 18px;
+            color: #aaa;
+            font-size: 11px;
+        }
+
+        /* Main Content */
+        .main {
+            width: calc(100% - 245px);
+            margin-left: 245px;
+            padding: 25px 32px 40px;
+        }
+
+        /* Header */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-title h1 {
+            font-size: 24px;
+            color: var(--charcoal);
+            letter-spacing: -0.7px;
+        }
+
+        .page-title p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        .student-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mini-avatar {
+            width: 38px;
+            height: 38px;
+            background: var(--accent-light);
+            border: 1px solid #E6C778;
+            color: var(--accent-dark);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .student-mini strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .student-mini span {
+            display: block;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* Welcome Section */
+        .welcome {
+            margin-top: 25px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--accent);
+            padding: 24px 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .welcome h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .welcome p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .semester-badge {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 9px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Overview */
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0 14px;
+        }
+
+        .section-heading h2 {
+            font-size: 17px;
+            color: var(--charcoal);
+        }
+
+        .section-heading span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 20px;
+        }
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .stat-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            display: grid;
+            place-items: center;
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .stat-note {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Profile and Attendance */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 22px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            color: var(--charcoal);
+            margin-bottom: 18px;
+        }
+
+        .profile {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            background: var(--charcoal);
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .profile-details h3 {
+            font-size: 19px;
+            margin-bottom: 4px;
+        }
+
+        .profile-details > p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px 20px;
+        }
+
+        .info-item {
+            font-size: 12px;
+        }
+
+        .info-item span {
+            color: var(--muted);
+            display: block;
+            font-size: 10px;
+            margin-bottom: 1px;
+        }
+
+        .info-item strong {
+            color: var(--text);
+        }
+
+        /* Attendance */
+        .attendance-value {
+            display: flex;
+            align-items: end;
+            gap: 7px;
+            margin-bottom: 13px;
+        }
+
+        .attendance-value strong {
+            font-size: 34px;
+            line-height: 1;
+            color: var(--charcoal);
+        }
+
+        .attendance-value span {
+            color: var(--muted);
+            font-size: 12px;
+            padding-bottom: 3px;
+        }
+
+        .progress {
+            height: 8px;
+            background: #EDEAE3;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 86%;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .attendance-note {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* Timetable */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            background: var(--charcoal);
+            color: var(--white);
+            text-align: left;
+            font-size: 11px;
+            padding: 12px 14px;
+            font-weight: 600;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border);
+            padding: 13px 14px;
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        tr:hover td {
+            background: #FFFCF5;
+        }
+
+        .day {
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .subject-tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            border: 1px solid #E9D59F;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* Academic Record */
+        .grade {
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+
+        .sgpa-box {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--accent-light);
+            border: 1px solid #E8D49A;
+            padding: 14px 16px;
+        }
+
+        .sgpa-box span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .sgpa-box strong {
+            font-size: 21px;
+            color: var(--charcoal);
+        }
+
+        /* Resources */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+        }
+
+        .resource {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 18px;
+            transition: 0.2s ease;
+        }
+
+        .resource:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .resource-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .resource h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .resource p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .resource a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        /* Multimedia */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 18px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            max-height: 280px;
+            background: #111;
+        }
+
+        .media-label {
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 35px;
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        footer strong {
+            color: var(--charcoal);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .overview,
+            .resources {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column,
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 72px;
+                padding: 20px 10px;
+            }
+
+            .brand {
+                justify-content: center;
+                padding: 0 0 22px;
+            }
+
+            .brand h2,
+            .brand span,
+            .nav-title,
+            .nav a span,
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .nav a {
+                justify-content: center;
+                padding: 13px 8px;
+            }
+
+            .main {
+                width: calc(100% - 72px);
+                margin-left: 72px;
+                padding: 20px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .student-mini div:last-child {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main {
+                padding: 15px;
+            }
+
+            .page-title h1 {
+                font-size: 20px;
+            }
+
+            .student-mini {
+                display: none;
+            }
+
+            .welcome {
+                display: block;
+                padding: 20px;
+            }
+
+            .semester-badge {
+                display: inline-block;
+                margin-top: 15px;
+            }
+
+            .overview,
+            .resources {
+                grid-template-columns: 1fr;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-avatar {
+                margin: auto;
+            }
+
+            .profile-info {
+                text-align: left;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-logo">CY</div>
+
+                <div>
+                    <h2>Coder Yatra</h2>
+                    <span>Academic Portal</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <div class="nav-title">Dashboard</div>
+
+                <a href="#" class="active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="#profile">
+                    <span class="nav-icon">◎</span>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="#timetable">
+                    <span class="nav-icon">▦</span>
+                    <span>Timetable</span>
+                </a>
+
+                <a href="#academic">
+                    <span class="nav-icon">▤</span>
+                    <span>Academic Record</span>
+                </a>
+
+                <a href="#resources">
+                    <span class="nav-icon">↗</span>
+                    <span>Resources</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                MCA · Semester 1<br>
+                Academic Year 2026
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div class="page-title">
+                    <h1>Student Dashboard</h1>
+                    <p>Academic overview and learning resources</p>
+                </div>
+
+                <div class="student-mini">
+                    <div class="mini-avatar">SS</div>
+
+                    <div>
+                        <strong>Sunny Kuntal</strong>
+                        <span>MCA26-014</span>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Welcome -->
+            <section class="welcome">
+
+                <div>
+                    <h2>Good morning, Sunny.</h2>
+                    <p>Here is your academic summary for the current semester.</p>
+                </div>
+
+                <div class="semester-badge">
+                    MCA · Semester 1
+                </div>
+
+            </section>
+
+            <!-- Overview -->
+            <section>
+
+                <div class="section-heading">
+                    <h2>Academic Overview</h2>
+                    <span>Updated for current semester</span>
+                </div>
+
+                <div class="overview">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Current SGPA</span>
+                            <span class="stat-icon">★</span>
+                        </div>
+
+                        <div class="stat-value">8.6</div>
+                        <div class="stat-note">Good academic performance</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Attendance</span>
+                            <span class="stat-icon">%</span>
+                        </div>
+
+                        <div class="stat-value">86%</div>
+                        <div class="stat-note">Above required attendance</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Subjects</span>
+                            <span class="stat-icon">#</span>
+                        </div>
+
+                        <div class="stat-value">06</div>
+                        <div class="stat-note">Subjects this semester</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Assignments</span>
+                            <span class="stat-icon">✓</span>
+                        </div>
+
+                        <div class="stat-value">12</div>
+                        <div class="stat-note">10 submitted · 2 pending</div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Profile and Attendance -->
+            <section class="two-column" id="profile" style="margin-top: 18px;">
+
+                <div class="card">
+
+                    <h2 class="card-title">Student Profile</h2>
+
+                    <div class="profile">
+
+                        <div class="profile-avatar">SS</div>
+
+                        <div class="profile-details">
+
+                            <h3>Sunny Kuntal</h3>
+                            <p>MCA · Semester 1 Student</p>
+
+                            <div class="profile-info">
+
+                                <div class="info-item">
+                                    <span>Student ID</span>
+                                    <strong>MCA26-014</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <span>Email</span>
+                                    <strong>sunny@coderyatra.edu</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <span>Programme</span>
+                                    <strong>Master of Computer Applications</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <span>Academic Year</span>
+                                    <strong>2026–27</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h2 class="card-title">Attendance</h2>
+
+                    <div class="attendance-value">
+                        <strong>86%</strong>
+                        <span>overall</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+
+                    <p class="attendance-note">
+                        You have maintained attendance above the minimum academic requirement.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- Timetable -->
+            <section id="timetable">
+
+                <div class="section-heading">
+                    <h2>Weekly Timetable</h2>
+                    <span>Semester 1 · Current Schedule</span>
+                </div>
+
+                <div class="card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>09:00 – 10:00</th>
+                                    <th>10:00 – 11:00</th>
+                                    <th>11:30 – 12:30</th>
+                                    <th>01:30 – 02:30</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td class="day">Monday</td>
+                                    <td><span class="subject-tag">Web Technology</span></td>
+                                    <td>Python</td>
+                                    <td>Discrete Maths</td>
+                                    <td>Lab</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="day">Tuesday</td>
+                                    <td>DBMS</td>
+                                    <td><span class="subject-tag">Web Technology</span></td>
+                                    <td>Java</td>
+                                    <td>Library</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="day">Wednesday</td>
+                                    <td>Python</td>
+                                    <td>Discrete Maths</td>
+                                    <td><span class="subject-tag">DBMS</span></td>
+                                    <td>Lab</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="day">Thursday</td>
+                                    <td>Java</td>
+                                    <td><span class="subject-tag">Web Technology</span></td>
+                                    <td>Python</td>
+                                    <td>Seminar</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="day">Friday</td>
+                                    <td>DBMS</td>
+                                    <td>Java</td>
+                                    <td><span class="subject-tag">Discrete Maths</span></td>
+                                    <td>Lab</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Academic Record -->
+            <section id="academic">
+
+                <div class="section-heading">
+                    <h2>Academic Record</h2>
+                    <span>Internal assessment</span>
+                </div>
+
+                <div class="card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Internal</th>
+                                    <th>Practical</th>
+                                    <th>Total</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Web Technology</td>
+                                    <td>43 / 50</td>
+                                    <td>45 / 50</td>
+                                    <td>88 / 100</td>
+                                    <td class="grade">A+</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Python Programming</td>
+                                    <td>42 / 50</td>
+                                    <td>44 / 50</td>
+                                    <td>86 / 100</td>
+                                    <td class="grade">A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Database Management</td>
+                                    <td>40 / 50</td>
+                                    <td>43 / 50</td>
+                                    <td>83 / 100</td>
+                                    <td class="grade">A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Java Programming</td>
+                                    <td>39 / 50</td>
+                                    <td>42 / 50</td>
+                                    <td>81 / 100</td>
+                                    <td class="grade">A</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Discrete Mathematics</td>
+                                    <td>41 / 50</td>
+                                    <td>40 / 50</td>
+                                    <td>81 / 100</td>
+                                    <td class="grade">A</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="sgpa-box">
+                        <span>Semester Grade Point Average</span>
+                        <strong>8.6 / 10</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Quick Resources -->
+            <section id="resources">
+
+                <div class="section-heading">
+                    <h2>Quick Resources</h2>
+                    <span>Academic links</span>
+                </div>
+
+                <div class="resources">
+
+                    <div class="resource">
+                        <div class="resource-icon">01</div>
+                        <h3>Assignments</h3>
+                        <p>View current assignments and submission details.</p>
+                        <a href="#">View assignments →</a>
+                    </div>
+
+                    <div class="resource">
+                        <div class="resource-icon">02</div>
+                        <h3>Examination Notices</h3>
+                        <p>Check examination schedules and important notices.</p>
+                        <a href="#">Open notices →</a>
+                    </div>
+
+                    <div class="resource">
+                        <div class="resource-icon">03</div>
+                        <h3>MDN Resources</h3>
+                        <p>Explore HTML, CSS and JavaScript documentation.</p>
+                        <a href="https://developer.mozilla.org/" target="_blank">Visit MDN →</a>
+                    </div>
+
+                    <div class="resource">
+                        <div class="resource-icon">04</div>
+                        <h3>Academic Calendar</h3>
+                        <p>View semester dates, holidays and academic events.</p>
+                        <a href="#">View calendar →</a>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Multimedia -->
+            <section>
+
+                <div class="section-heading">
+                    <h2>Learning Media</h2>
+                    <span>Course material</span>
+                </div>
+
+                <div class="media-grid">
+
+                    <div class="card">
+
+                        <h2 class="card-title">Audio Lecture</h2>
+
+                        <p class="media-label">
+                            Web Technology — Introduction
+                        </p>
+
+                        <audio controls>
+                            <source src="lecture.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                    </div>
+
+                    <div class="card">
+
+                        <h2 class="card-title">Instructional Video</h2>
+
+                        <video controls>
+                            <source
+                                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                                type="video/mp4">
+                            Your browser does not support the video element.
+                        </video>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <span>© 2026 <strong>Coder Yatra</strong></span>
+                <span>Student Academic Dashboard · MCA Semester 1</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

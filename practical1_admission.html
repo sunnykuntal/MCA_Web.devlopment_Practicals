@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Admission Importance -->
+    <meta name="description"
+          content="Coder Yatra College Admission Portal - Apply for technology and computer science programs.">
+
+    <meta name="keywords"
+          content="Coder Yatra, college admission, BCA, BSc Computer Science, MCA">
+
+    <title>Coder Yatra | College Admission Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* Reset */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #ffffff;
+            color: #222222;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* Variables */
+
+        :root {
+            --orange: #f56a0a;
+            --orange-dark: #dc5700;
+            --orange-light: #fff3e9;
+
+            --charcoal: #222222;
+            --text: #333333;
+            --muted: #707070;
+
+            --border: #e7e7e7;
+            --light: #f7f7f5;
+            --white: #ffffff;
+        }
+
+
+        /* Header */
+
+        header {
+            height: 82px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.97);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: min(1240px, calc(100% - 48px));
+            height: 100%;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* Logo */
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+
+            background: var(--orange);
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 3px 3px 0 #242424;
+        }
+
+        .brand-logo span {
+            color: white;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .brand-name {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .brand-subtitle {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            color: #777;
+            margin-top: 3px;
+        }
+
+
+        /* Navigation */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #303030;
+
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .apply-btn {
+            padding: 12px 22px;
+
+            background: var(--charcoal);
+            color: white !important;
+
+            border-radius: 8px;
+        }
+
+        .apply-btn:hover {
+            background: var(--orange);
+        }
+
+
+        /* Hero Section */
+
+        .hero {
+            background: #f7f7f5;
+            border-bottom: 1px solid #ededed;
+        }
+
+        .hero-container {
+            width: min(1240px, calc(100% - 48px));
+            margin: auto;
+
+            min-height: 650px;
+
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 80px;
+
+            align-items: center;
+            padding: 80px 0;
+        }
+
+
+        /* Hero Content */
+
+        .hero-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--orange);
+
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-label::before {
+            content: "";
+            width: 28px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(48px, 5.4vw, 76px);
+            line-height: 0.98;
+            letter-spacing: -3.5px;
+
+            max-width: 720px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin-top: 28px;
+
+            font-size: 18px;
+            line-height: 1.75;
+
+            color: #666;
+        }
+
+
+        /* Hero Buttons */
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+
+            margin-top: 34px;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--orange);
+            color: white;
+
+            padding: 15px 24px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            box-shadow: 0 8px 18px rgba(245, 106, 10, 0.16);
+
+            transition: 0.2s ease;
+        }
+
+        .primary-btn:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+            color: #222;
+
+            padding: 15px 24px;
+
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .secondary-btn:hover {
+            border-color: #222;
+        }
+
+
+        /* Admission Panel */
+
+        .admission-panel {
+            background: white;
+
+            border: 1px solid #dedede;
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.07);
+        }
+
+        .panel-top {
+            padding: 30px 32px;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .panel-heading small {
+            display: block;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1.4px;
+
+            color: var(--orange);
+
+            margin-bottom: 8px;
+        }
+
+        .panel-heading h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 27px;
+            line-height: 1.2;
+        }
+
+        .open-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 11px;
+
+            background: #f4f7f2;
+            color: #376026;
+
+            border-radius: 100px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .open-status::before {
+            content: "";
+
+            width: 7px;
+            height: 7px;
+
+            background: #4d9a31;
+
+            border-radius: 50%;
+        }
+
+
+        /* Program List */
+
+        .program-list {
+            padding: 8px 32px 20px;
+        }
+
+        .program {
+            display: grid;
+
+            grid-template-columns: 45px 1fr auto;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding: 22px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .program:last-child {
+            border-bottom: none;
+        }
+
+        .program-number {
+            width: 38px;
+            height: 38px;
+
+            border: 1px solid #dddddd;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--orange);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .program h3 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .program p {
+            margin-top: 3px;
+
+            font-size: 13px;
+
+            color: #777;
+        }
+
+        .program-duration {
+            font-size: 12px;
+            font-weight: 600;
+
+            color: #777;
+
+            white-space: nowrap;
+        }
+
+        .panel-bottom {
+            padding: 20px 32px;
+
+            background: #fafafa;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .panel-bottom p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .panel-link {
+            color: var(--orange);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* Common Sections */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 48px));
+            margin: auto;
+        }
+
+        .section-heading {
+            max-width: 650px;
+
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            color: var(--orange);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1.6px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.05;
+
+            letter-spacing: -1.8px;
+        }
+
+        .section-heading p {
+            color: #707070;
+
+            margin-top: 16px;
+
+            font-size: 16px;
+        }
+
+
+        /* Courses */
+
+        .courses {
+            background: white;
+        }
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            border-top: 1px solid var(--border);
+            border-left: 1px solid var(--border);
+        }
+
+        .course-card {
+            padding: 34px;
+
+            min-height: 245px;
+
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+
+            transition: 0.25s ease;
+        }
+
+        .course-card:hover {
+            background: var(--orange-light);
+        }
+
+        .course-number {
+            color: var(--orange);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .course-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 25px;
+
+            margin-top: 28px;
+        }
+
+        .course-card p {
+            color: #707070;
+
+            font-size: 14px;
+
+            margin-top: 12px;
+        }
+
+        .course-link {
+            display: inline-block;
+
+            margin-top: 24px;
+
+            color: #222;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* Admission Section */
+
+        .admission-section {
+            background: #f7f7f5;
+        }
+
+        .form-wrapper {
+            display: grid;
+
+            grid-template-columns: 0.72fr 1.28fr;
+
+            gap: 70px;
+
+            align-items: start;
+        }
+
+        .form-intro h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+        .form-intro p {
+            color: #6d6d6d;
+
+            margin-top: 18px;
+
+            font-size: 15px;
+        }
+
+        .form-note {
+            margin-top: 28px;
+
+            padding-left: 16px;
+
+            border-left: 3px solid var(--orange);
+
+            font-size: 13px;
+
+            color: #666;
+        }
+
+        form {
+            background: white;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            padding: 34px;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            border: 1px solid #dcdcdc;
+            border-radius: 7px;
+
+            padding: 12px 13px;
+
+            background: white;
+
+            outline: none;
+
+            color: #333;
+
+            transition: 0.2s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--orange);
+
+            box-shadow: 0 0 0 3px rgba(245, 106, 10, 0.08);
+        }
+
+        textarea {
+            resize: vertical;
+
+            min-height: 100px;
+        }
+
+        .form-submit {
+            margin-top: 24px;
+
+            width: 100%;
+
+            border: none;
+
+            cursor: pointer;
+
+            background: var(--orange);
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 7px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--orange-dark);
+        }
+
+
+        /* Contact Section */
+
+        .contact {
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: 1.1fr 0.9fr;
+
+            gap: 80px;
+        }
+
+        .contact-title {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 44px;
+
+            line-height: 1.1;
+        }
+
+        .contact-text {
+            margin-top: 18px;
+
+            color: #707070;
+
+            max-width: 520px;
+        }
+
+        .contact-details {
+            display: grid;
+
+            gap: 22px;
+        }
+
+        .contact-item {
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item span {
+            display: block;
+
+            color: var(--orange);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1.3px;
+
+            margin-bottom: 5px;
+        }
+
+        .contact-item strong {
+            font-size: 15px;
+        }
+
+
+        /* Footer */
+
+        footer {
+            background: #222222;
+
+            color: white;
+
+            padding: 30px 0;
+        }
+
+        .footer-container {
+            width: min(1120px, calc(100% - 48px));
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .footer-brand {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .footer-text {
+            color: #aaa;
+
+            font-size: 12px;
+        }
+
+
+        /* Responsive Tablet */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                gap: 55px;
+
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                max-width: 700px;
+            }
+
+            .admission-panel {
+                max-width: 680px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+        }
+
+
+        /* Responsive Mobile */
+
+        @media (max-width: 700px) {
+
+            header {
+                height: auto;
+            }
+
+            .nav-container {
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .brand-logo {
+                width: 44px;
+                height: 44px;
+            }
+
+            .hero-container,
+            .container,
+            .nav-container {
+                width: min(100% - 32px, 1120px);
+            }
+
+            .hero-container {
+                padding: 50px 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                letter-spacing: -2.5px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+            .panel-top {
+                flex-direction: column;
+            }
+
+            .program {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .program-duration {
+                grid-column: 2;
+            }
+
+            .panel-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            form {
+                padding: 22px;
+            }
+
+            .form-intro h2,
+            .contact-title {
+                font-size: 36px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="nav-container">
+
+            <a href="#home" class="brand">
+
+                <div class="brand-logo">
+                    <span>CY</span>
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        Coder Yatra
+                    </div>
+
+                    <div class="brand-subtitle">
+                        TECHNOLOGY & EDUCATION
+                    </div>
+                </div>
+
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#courses">Courses</a>
+
+                <a href="#admission">Admission</a>
+
+                <a href="#contact">Contact</a>
+
+                <a href="#admission" class="apply-btn">
+                    Apply Now
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Hero Section -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-container">
+
+
+                <!-- Hero Content -->
+
+                <div>
+
+                    <div class="hero-label">
+                        ADMISSIONS OPEN 2026
+                    </div>
+
+                    <h1>
+                        Build your future.
+                        <span>Start coding.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Welcome to Coder Yatra — a technology-focused
+                        learning community where students develop practical
+                        skills, work on real projects and prepare for
+                        careers in the digital world.
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a href="#admission" class="primary-btn">
+                            Start Application →
+                        </a>
+
+                        <a href="#courses" class="secondary-btn">
+                            Explore Courses
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Admission Panel -->
+
+                <aside class="admission-panel">
+
+
+                    <div class="panel-top">
+
+                        <div class="panel-heading">
+
+                            <small>
+                                PROGRAMMES
+                            </small>
+
+                            <h2>
+                                Choose your<br>
+                                area of study.
+                            </h2>
+
+                        </div>
+
+                        <div class="open-status">
+                            Admissions Open
+                        </div>
+
+                    </div>
+
+
+                    <!-- Program List -->
+
+                    <div class="program-list">
+
+
+                        <div class="program">
+
+                            <div class="program-number">
+                                01
+                            </div>
+
+                            <div>
+                                <h3>
+                                    Bachelor of Computer Applications
+                                </h3>
+
+                                <p>
+                                    Software development & applications
+                                </p>
+                            </div>
+
+                            <div class="program-duration">
+                                3 Years
+                            </div>
+
+                        </div>
+
+
+                        <div class="program">
+
+                            <div class="program-number">
+                                02
+                            </div>
+
+                            <div>
+                                <h3>
+                                    B.Sc. Computer Science
+                                </h3>
+
+                                <p>
+                                    Computing, programming & technology
+                                </p>
+                            </div>
+
+                            <div class="program-duration">
+                                3 Years
+                            </div>
+
+                        </div>
+
+
+                        <div class="program">
+
+                            <div class="program-number">
+                                03
+                            </div>
+
+                            <div>
+                                <h3>
+                                    Master of Computer Applications
+                                </h3>
+
+                                <p>
+                                    Advanced software & application development
+                                </p>
+                            </div>
+
+                            <div class="program-duration">
+                                2 Years
+                            </div>
+
+                        </div>
+
+                        <div class="program">
+
+                            <div class="program-number">
+                                04
+                            </div>
+
+                            <div>
+                                <h3>
+                                    B.Tech. Computer Science
+                                </h3>
+
+                                <p>
+                                    Engineering, programming & technology
+                                </p>
+                            </div>
+
+                            <div class="program-duration">
+                                4 Years
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Admission Panel Footer -->
+
+                    <div class="panel-bottom">
+
+                        <p>
+                            Applications for the 2026 academic session
+                            are currently open.
+                        </p>
+
+                        <a href="#admission" class="panel-link">
+                            Apply now →
+                        </a>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- Courses Section -->
+
+        <section class="section courses" id="courses">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        ACADEMIC PROGRAMMES
+                    </div>
+
+                    <h2>
+                        Courses designed for
+                        the digital world.
+                    </h2>
+
+                    <p>
+                        Explore our technology and computer science
+                        programmes and choose the path that fits
+                        your academic goals.
+                    </p>
+
+                </div>
+
+
+                <!-- Course Grid -->
+
+                <div class="course-grid">
+
+
+                    <article class="course-card">
+
+                        <div class="course-number">
+                            01 / UG
+                        </div>
+
+                        <h3>
+                            BCA
+                        </h3>
+
+                        <p>
+                            Build a strong foundation in programming,
+                            web development, databases and software
+                            applications.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about BCA →
+                        </a>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div class="course-number">
+                            02 / UG
+                        </div>
+
+                        <h3>
+                            B.Sc. Computer Science
+                        </h3>
+
+                        <p>
+                            Study computer science fundamentals,
+                            programming, computing concepts and
+                            modern technologies.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about B.Sc. →
+                        </a>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div class="course-number">
+                            03 / PG
+                        </div>
+
+                        <h3>
+                            MCA
+                        </h3>
+
+                        <p>
+                            Develop advanced knowledge in software
+                            engineering, application development
+                            and computing.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about MCA →
+                        </a>
+
+                    </article>
+ <article class="course-card">
+
+                        <div class="course-number">
+                            04 / UG
+                        </div>
+
+                        <h3>
+                            B.Tech. Computer Science
+                        </h3>
+
+                        <p>
+                            Gain expertise in computer science,
+                            programming, software engineering and
+                            technology.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about B.Tech. →
+                        </a>
+
+                    </article>
+                     <article class="course-card">
+
+                        <div class="course-number">
+                            05 / PG
+                        </div>
+
+                        <h3>
+                            MBA
+                        </h3>
+
+                        <p>
+                            Learn business management, leadership,
+                            marketing, finance and entrepreneurship
+                            in the digital era.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about MBA →
+                        </a>
+
+                    </article>
+ <article class="course-card">
+
+                        <div class="course-number">
+                            06 / PG
+                        </div>
+
+                        <h3>
+                            M.Tech. Computer Science
+                        </h3>
+
+                        <p>
+                            Gain advanced knowledge in computer science,
+                            research and development.
+                        </p>
+
+                        <a href="#admission" class="course-link">
+                            Enquire about M.Tech. →
+                        </a>
+
+                    </article>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Admission Section -->
+
+        <section class="section admission-section" id="admission">
+
+            <div class="container">
+
+                <div class="form-wrapper">
+
+
+                    <div class="form-intro">
+
+                        <div class="section-label">
+                            ADMISSION 2026
+                        </div>
+
+                        <h2>
+                            Begin your
+                            application.
+                        </h2>
+
+                        <p>
+                            Fill in your details and our admission
+                            team can get in touch with you regarding
+                            the programme and admission process.
+                        </p>
+
+                        <div class="form-note">
+                            Please enter your information carefully.
+                            Fields marked with * are required.
+                        </div>
+
+                    </div>
+
+
+                    <!-- Admission Form -->
+
+                    <form id="admissionForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="field">
+
+                                <label for="name">
+                                    Full Name *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="email">
+                                    Email Address *
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="mobile">
+                                    Mobile Number *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    name="mobile"
+                                    placeholder="10-digit mobile number"
+                                    pattern="[0-9]{10}"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="dob">
+                                    Date of Birth *
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dob"
+                                    name="dob"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="gender">
+                                    Gender *
+                                </label>
+
+                                <select
+                                    id="gender"
+                                    name="gender"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select gender
+                                    </option>
+
+                                    <option value="male">
+                                        Male
+                                    </option>
+
+                                    <option value="female">
+                                        Female
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="course">
+                                    Preferred Course *
+                                </label>
+
+                                <select
+                                    id="course"
+                                    name="course"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select course
+                                    </option>
+
+                                    <option value="bca">
+                                        BCA
+                                    </option>
+
+                                    <option value="bsc">
+                                        B.Sc. Computer Science
+                                    </option>
+
+                                    <option value="mca">
+                                        MCA
+                                    </option>
+                                    <option value="btech">
+                                        B.Tech. Computer Science
+                                    </option>
+                                    <option value="mca">
+                                        MBA
+                                    </option>
+<option value="mca">
+                                        M.Tech. Computer Science
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="marks">
+                                    Previous Qualification / Marks
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="marks"
+                                    name="marks"
+                                    placeholder="Example: 78% / B.Sc."
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="city">
+                                    City
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    placeholder="Enter your city"
+                                >
+
+                            </div>
+
+
+                            <div class="field full">
+
+                                <label for="address">
+                                    Address
+                                </label>
+
+                                <textarea
+                                    id="address"
+                                    name="address"
+                                    placeholder="Enter your complete address"
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="form-submit"
+                        >
+                            Submit Admission Enquiry
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact Section -->
+
+        <section class="section contact" id="contact">
+
+            <div class="container">
+
+                <div class="contact-grid">
+
+
+                    <div>
+
+                        <div class="section-label">
+                            CONTACT
+                        </div>
+
+                        <h2 class="contact-title">
+                            Have questions
+                            about admission?
+                        </h2>
+
+                        <p class="contact-text">
+                            Get in touch with the Coder Yatra admission
+                            team for information about courses,
+                            eligibility and the application process.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Contact Details -->
+
+                    <div class="contact-details">
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                ADMISSIONS OFFICE
+                            </span>
+
+                            <strong>
+                                Coder Yatra
+                            </strong>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                EMAIL
+                            </span>
+
+                            <strong>
+                                admissions@coderyatra.com
+                            </strong>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                PHONE
+                            </span>
+
+                            <strong>
+                                +91 8171913570
+                            </strong>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                OFFICE HOURS
+                            </span>
+
+                            <strong>
+                                Monday – Saturday, 9:00 AM – 5:00 PM
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                Coder Yatra
+            </div>
+
+            <div class="footer-text">
+                © 2026 Coder Yatra. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+    
+</body>
+</html>
